@@ -19,7 +19,7 @@ Or just `node build.mjs` and open `dist/index.html`.
 | Projects (one file each) | `content/projects/*.json` |
 | Certifications (one file each) | `content/certifications/*.json` |
 | Blog and LinkedIn posts | `content/writing.json` |
-| Link preview image, favicon | `public/og.png`, `public/favicon.svg` |
+| Portrait, link preview image, favicon | `public/photo.jpg`, `public/og.png`, `public/favicon.svg` |
 | Styling | `src/styles.css` |
 
 ## Add a new project

@@ -65,6 +65,9 @@ nav a[aria-current="page"] { color: var(--heading); border-bottom-color: var(--a
 main.col { padding-top: 56px; padding-bottom: 40px; }
 section { margin-top: 56px; }
 .intro { margin-top: 0; }
+.intro-head { display: flex; align-items: center; gap: 28px; margin-bottom: 28px; }
+.intro-head .motto { margin-bottom: 0; }
+.portrait { width: 120px; height: 120px; flex: none; border-radius: 50%; object-fit: cover; border: 3px solid var(--bg); box-shadow: 0 0 0 1px var(--line), 0 6px 20px rgba(0,0,0,.08); }
 .intro h1 { font: 600 clamp(34px, 6vw, 44px)/1.15 var(--serif); letter-spacing: -0.01em; }
 .motto { font: italic 500 clamp(20px, 3.2vw, 24px)/1.4 var(--serif); color: var(--accent); margin: 10px 0 28px; }
 .facts { list-style: none; padding: 16px 0 0; margin: 28px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 15px; color: var(--muted); }
@@ -158,5 +161,7 @@ details p { margin-bottom: .7em; }
   nav a { display: inline-block; padding: 12px 0 10px; }
   main.col { padding-top: 36px; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .intro-head { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .portrait { width: 96px; height: 96px; }
   .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }

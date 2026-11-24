@@ -164,8 +164,13 @@ pages.push({
   path: '',
   body: (base) => `
 <section class="intro">
-  <h1>${esc(profile.greeting)}</h1>
-  <p class="motto">${esc(profile.motto)}</p>
+  <div class="intro-head">
+    <img class="portrait" src="${base}photo.jpg" alt="Portrait of ${esc(profile.name)}" width="120" height="120">
+    <div>
+      <h1>${esc(profile.greeting)}</h1>
+      <p class="motto">${esc(profile.motto)}</p>
+    </div>
+  </div>
   ${profile.bio.map((p) => `<p>${inline(p, base)}</p>`).join('\n  ')}
   <ul class="facts">${profile.stats.map((s) => `<li><strong>${esc(s.value)}</strong> ${esc(s.label)}</li>`).join('')}</ul>
 </section>
