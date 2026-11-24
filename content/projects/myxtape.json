@@ -1,0 +1,18 @@
+{
+  "title": "MyXTape: music sync platform",
+  "category": "professional",
+  "featured": false,
+  "order": 10,
+  "org": "Crownstack Technologies",
+  "summary": "Automated Spotify and Apple Music content ingestion that respects API limits.",
+  "impact": "Smoother artist onboarding and reliable continuous sync.",
+  "tech": [
+    "PHP",
+    "Spotify API",
+    "Apple Music API"
+  ],
+  "problem": "The client needed reliable streaming integration with Spotify and Apple Music while staying within API limits.",
+  "solution": "Built a music-sync integration with automated content ingestion pipelines, backend modules and metadata indexing workflows for heavy data refreshes.",
+  "result": "Enabled smooth artist onboarding and improved sync reliability across third-party music services.",
+  "links": []
+}

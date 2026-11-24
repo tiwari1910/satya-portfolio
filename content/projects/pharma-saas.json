@@ -1,0 +1,20 @@
+{
+  "title": "Pharma SaaS compliance platform",
+  "category": "professional",
+  "featured": true,
+  "order": 3,
+  "org": "Spark Eighteen",
+  "summary": "Centralised compliance and drug-distribution reporting for a global pharmaceutical client.",
+  "impact": "Global reporting time cut by 50%, with better compliance accuracy.",
+  "tech": [
+    "NestJS",
+    "React.js",
+    "PostgreSQL",
+    "Tableau",
+    "REST APIs"
+  ],
+  "problem": "A global pharmaceutical client lacked a centralised SaaS system for compliance and accurate drug-distribution reporting.",
+  "solution": "Built an enterprise SaaS platform to aggregate and visualise large volumes of pharma data, with automated data pipelines for real-time accuracy and scale across stakeholders.",
+  "result": "Reduced global reporting time by 50%, improved compliance accuracy and delivered insights faster to global pharma partners.",
+  "links": []
+}

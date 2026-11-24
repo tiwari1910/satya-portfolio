@@ -1,0 +1,19 @@
+{
+  "title": "VC & startup CRM with AI chatbot",
+  "category": "professional",
+  "featured": true,
+  "order": 4,
+  "org": "Spark Eighteen",
+  "summary": "Lead generation, deal tracking, Chrome plug-ins and a WhatsApp chatbot for a venture capital partner.",
+  "impact": "35% better deal-sourcing efficiency.",
+  "tech": [
+    "Node.js",
+    "WhatsApp API",
+    "AI chatbots",
+    "CRM automation"
+  ],
+  "problem": "A venture capital partner needed tools to source startups, manage leads and track deals efficiently at scale.",
+  "solution": "Built a CRM and automation platform with lead generation, monitoring and custom Chrome plug-ins, plus a WhatsApp chatbot and client management system for deal flow.",
+  "result": "Improved deal-sourcing efficiency by 35%, sped up decision-making and improved client engagement.",
+  "links": []
+}

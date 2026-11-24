@@ -1,0 +1,18 @@
+{
+  "title": "Field service SaaS",
+  "category": "professional",
+  "featured": false,
+  "order": 7,
+  "org": "Think Power Solutions",
+  "summary": "Project tracking, reporting workflows and real-time dashboards for field-service businesses.",
+  "impact": "50% faster report generation.",
+  "tech": [
+    "Node.js",
+    "Angular",
+    "MySQL"
+  ],
+  "problem": "Field-service businesses needed robust tools for project tracking, reporting and task automation.",
+  "solution": "Built field-service automation features, custom reporting workflows and performance-focused Node.js APIs, with MySQL storage optimised for fast retrieval and real-time Angular dashboards.",
+  "result": "Made report generation 50% faster and improved overall platform stability.",
+  "links": []
+}

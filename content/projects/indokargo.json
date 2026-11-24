@@ -1,0 +1,18 @@
+{
+  "title": "Indokargo: e-commerce & logistics",
+  "category": "professional",
+  "featured": false,
+  "order": 8,
+  "org": "Crownstack Technologies",
+  "summary": "Order management, vendor coordination and a delivery routing engine.",
+  "impact": "30% faster delivery turnaround.",
+  "tech": [
+    "PHP",
+    "MySQL",
+    "REST APIs"
+  ],
+  "problem": "A logistics operator needed centralised order management, vendor coordination and delivery routing.",
+  "solution": "Built a workflow-heavy logistics system and vendor automation modules, with a reliable routing engine, order-tracking APIs and MySQL-powered operational dashboards.",
+  "result": "Reduced delivery turnaround time by 30% and improved delivery accuracy.",
+  "links": []
+}

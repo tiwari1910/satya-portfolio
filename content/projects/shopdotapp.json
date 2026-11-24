@@ -1,0 +1,21 @@
+{
+  "title": "Shopdotapp: B2B e-commerce engine",
+  "category": "professional",
+  "featured": true,
+  "order": 1,
+  "org": "Ziqonfox Technologies",
+  "summary": "Catalog, vendor onboarding and automated Shopify and WooCommerce sync for brands and retailers.",
+  "impact": "60% performance boost; the platform raised venture funding after launch.",
+  "tech": [
+    "Node.js",
+    "React.js",
+    "MySQL",
+    "Shopify API",
+    "WooCommerce API",
+    "Stripe"
+  ],
+  "problem": "Retailers and brands needed a scalable platform to manage catalogs, orders and vendors across fragmented storefronts.",
+  "solution": "Built an end-to-end B2B e-commerce system with catalog management and vendor onboarding modules, plus automated Shopify and WooCommerce sync engines and order workflows powered by MySQL optimisations.",
+  "result": "Boosted system performance by 60%, significantly reduced data sync failures, and enabled smooth onboarding of high-volume merchants.",
+  "links": []
+}

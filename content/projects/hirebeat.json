@@ -1,0 +1,18 @@
+{
+  "title": "HireBeat: recruitment & job matching",
+  "category": "professional",
+  "featured": false,
+  "order": 5,
+  "org": "Ziqonfox Technologies",
+  "summary": "Candidate-matching engine and automated job workflows across many data sources.",
+  "impact": "45% better matching accuracy and lower API latency.",
+  "tech": [
+    "Python",
+    "Node.js",
+    "Microservices"
+  ],
+  "problem": "The platform needed advanced job matching and automated candidate workflows across many constantly updating data sources.",
+  "solution": "Developed a candidate-matching engine and automated job workflows using Python and Node.js services, with optimised search and filtering and streamlined data integration pipelines.",
+  "result": "Improved job-matching accuracy and cut API latency by 45%, raising user satisfaction.",
+  "links": []
+}

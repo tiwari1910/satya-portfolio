@@ -1,0 +1,18 @@
+{
+  "title": "WEWISPs: ISP management platform",
+  "category": "professional",
+  "featured": false,
+  "order": 11,
+  "org": "Computerware India",
+  "summary": "User management, billing and network monitoring for an internet service provider.",
+  "impact": "Fewer support tickets and more efficient customer management.",
+  "tech": [
+    "PHP",
+    "JavaScript",
+    "SQL"
+  ],
+  "problem": "An internet service provider needed one platform for user management, billing and network monitoring across a large user base.",
+  "solution": "Built an end-to-end ISP management system with billing modules, network-monitoring dashboards, stable backend workflows and browser-compatible UI components.",
+  "result": "Improved customer management efficiency and reduced overhead and support ticket volume.",
+  "links": []
+}

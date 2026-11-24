@@ -1,0 +1,58 @@
+[
+  {
+    "company": "Spark Eighteen",
+    "role": "Senior Software Engineer (Node.js)",
+    "start": "Feb 2025",
+    "end": "Present",
+    "highlights": [
+      "Architect scalable microservices and REST APIs with NestJS and Node.js for real-time data aggregation in enterprise SaaS.",
+      "Built automated data pipelines that cut manual reporting work by 50%.",
+      "Integrate open-source AI models and custom chatbots into CRM platforms for automated deal sourcing.",
+      "Work with global stakeholders on technical roadmaps, keeping full compliance with data security standards."
+    ]
+  },
+  {
+    "company": "Ziqonfox Technologies",
+    "role": "Technical Lead (Node.js)",
+    "start": "Jul 2023",
+    "end": "Feb 2025",
+    "highlights": [
+      "Led a cross-functional team of 15+ engineers building B2B e-commerce and real-time fantasy sports platforms on an event-driven architecture.",
+      "Improved API latency by 60% and reduced data sync failures across MySQL and PostgreSQL.",
+      "Designed a backend that supported 10,000+ concurrent users with zero downtime at peak.",
+      "Built candidate-matching algorithms in Python and Node.js that raised job-matching accuracy by 45%."
+    ]
+  },
+  {
+    "company": "Think Power Solutions",
+    "role": "Senior Software Engineer (Node.js)",
+    "start": "Jan 2022",
+    "end": "Jul 2023",
+    "highlights": [
+      "Built workflow automation modules and dynamic form engines with Python, Node.js and MongoDB.",
+      "Created reusable React components and Angular dashboards that sped up enterprise client onboarding.",
+      "Optimised MySQL storage and API integrations, making report generation 50% faster."
+    ]
+  },
+  {
+    "company": "Crownstack Technologies",
+    "role": "Software Engineer (Node.js)",
+    "start": "Feb 2019",
+    "end": "Jan 2022",
+    "highlights": [
+      "Built secure marketplace backends in NestJS with role-based access control and OAuth.",
+      "Designed logistics routing engines and tracking APIs that cut delivery turnaround by 30%.",
+      "Automated Spotify and Apple Music ingestion pipelines and heavy webhook traffic, cutting production bugs by 45%."
+    ]
+  },
+  {
+    "company": "Computerware India",
+    "role": "Junior Software Engineer",
+    "start": "Sep 2017",
+    "end": "Feb 2019",
+    "highlights": [
+      "Built a full-stack ISP management platform with PHP backends and responsive frontends.",
+      "Created billing modules and network-monitoring dashboards that reduced customer support tickets."
+    ]
+  }
+]

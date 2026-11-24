@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Smart Claude Code model routing with code-graph risk scoring",
+    "summary": "How Claude Code Router v2 reads the code a prompt touches, scores its risk and picks the right model, with honest limitations.",
+    "where": "Hashnode",
+    "url": "https://devlore.hashnode.dev/claude-code-router"
+  },
+  {
+    "title": "How I route every Claude Code prompt to the right model",
+    "summary": "The first version: a small Python hook that sends each prompt to Haiku, Sonnet or Opus, with the full code and test results.",
+    "where": "Hashnode",
+    "url": "https://devlore.hashnode.dev/how-i-route-every-claude-code-prompt-to-the-right-model"
+  },
+  {
+    "title": "Why I almost downed a production database with a single SQL command",
+    "summary": "Lessons from indexing a 1 TB table: concurrent indexes, disk headroom, partial indexes and partitioning.",
+    "where": "LinkedIn",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7479816790160719872/"
+  },
+  {
+    "title": "Searching by similarity isn't remembering",
+    "summary": "Why a vector database alone traps AI agents in loops, and how working, episodic and semantic memory fix it.",
+    "where": "LinkedIn",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7477688650546262016/"
+  },
+  {
+    "title": "Stop defaulting to the biggest model",
+    "summary": "LLMs vs small language models in production, and why a hybrid intent router wins on cost, latency and privacy.",
+    "where": "LinkedIn",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475872940312416256/"
+  },
+  {
+    "title": "Relational vs document databases: the lines are blurring",
+    "summary": "Many-to-many relationships, schema-on-read vs schema-on-write, and data locality in modern database choices.",
+    "where": "LinkedIn",
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475510557404581888/"
+  }
+]

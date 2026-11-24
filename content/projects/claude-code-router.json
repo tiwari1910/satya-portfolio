@@ -1,0 +1,37 @@
+{
+  "title": "Claude Code Router (ccr)",
+  "category": "personal",
+  "featured": true,
+  "order": 1,
+  "org": "Open source · personal project",
+  "summary": "Routes every Claude Code prompt to the cheapest model and effort level that can handle it.",
+  "impact": "1,100+ PyPI downloads; 98% task success with an estimated 78% saving vs running everything on Opus (my own 60-task trial).",
+  "tech": [
+    "Python",
+    "tree-sitter",
+    "Claude Code hooks",
+    "Node.js",
+    "MIT"
+  ],
+  "problem": "Running one model for everything in Claude Code meant either paying Opus prices for simple lookups like \"where is the login handler?\" or getting confident, shallow answers from Haiku on hard bugs.",
+  "solution": "A local, rule-based router that classifies each task (question, bug fix, feature, migration, security, design), finds the code it touches with a tree-sitter code graph, and scores risk from dependents, complexity, test coverage, change frequency and critical paths such as auth or payments. It picks one of six tiers from Haiku/low to Opus/xhigh, learns from past outcomes, and shows usage in a dashboard. v1 was a keyword-based Python hook; v2 added the code graph and learning; v0.2.1 added code-aware routing, Haiku change-size prediction and 48 regression prompts.",
+  "result": "Published on PyPI and npm with 1,100+ downloads. Right-sized models for each task, with no extra API calls to decide.",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/ai-solution-architect-roadmap/claude-code-router"
+    },
+    {
+      "label": "PyPI",
+      "url": "https://pypi.org/project/claude-code-router/"
+    },
+    {
+      "label": "npm",
+      "url": "https://www.npmjs.com/package/@satya-prakash/claude-code-router"
+    },
+    {
+      "label": "Article",
+      "url": "https://devlore.hashnode.dev/claude-code-router"
+    }
+  ]
+}

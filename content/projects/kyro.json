@@ -1,0 +1,19 @@
+{
+  "title": "KYRO: workflow automation SaaS",
+  "category": "professional",
+  "featured": false,
+  "order": 6,
+  "org": "Think Power Solutions",
+  "summary": "Dynamic forms, workflow automation and role-based access for construction enterprises.",
+  "impact": "Less manual work and faster onboarding for B2B clients.",
+  "tech": [
+    "Python",
+    "Node.js",
+    "MongoDB",
+    "React.js"
+  ],
+  "problem": "Construction enterprises needed streamlined workflows, custom dynamic forms and project automation for process management.",
+  "solution": "Built workflow automation modules, dynamic form engines and role-based access on a flexible Python and MongoDB backend with reusable React components.",
+  "result": "Boosted team productivity, reduced manual operational tasks and accelerated onboarding for enterprise clients.",
+  "links": []
+}

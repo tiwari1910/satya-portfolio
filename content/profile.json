@@ -1,0 +1,43 @@
+{
+  "name": "Satya Prakash Tiwari",
+  "role": "Senior Software Engineer & Technical Lead",
+  "tagline": "Backend engineering · Distributed systems · Scalable SaaS · AI integrations",
+  "location": "Lucknow, India",
+  "siteUrl": "https://tiwari1910.github.io/satya-portfolio",
+  "intro": "I design and ship scalable backend systems, microservices and SaaS platforms. Over 8.5 years I've led teams of 15+ engineers, built platforms serving 10,000+ concurrent users, and integrated LLMs like Llama 3 and OpenAI into real products for clients across e-commerce, healthcare and logistics.",
+  "about": [
+    "I'm a backend-focused full-stack engineer who enjoys turning messy business problems into reliable systems. My work spans B2B e-commerce, fantasy sports, healthcare compliance, recruitment, logistics and workflow automation.",
+    "Lately I've been focused on bringing AI into real products: integrating open-source and proprietary LLMs into CRMs and chatbots, and building my own developer tooling around AI coding assistants, such as Claude Code Router.",
+    "Outside client work I keep learning in public, through open-source projects and writing about system design and AI engineering."
+  ],
+  "stats": [
+    { "value": "8.5+", "label": "years building production software" },
+    { "value": "15+", "label": "engineers led" },
+    { "value": "10k+", "label": "concurrent users supported" },
+    { "value": "11", "label": "client platforms delivered" }
+  ],
+  "contact": {
+    "email": "satya.prakash259@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/satya-prakash-be/",
+    "github": "https://github.com/tiwari1910",
+    "blog": "https://devlore.hashnode.dev/"
+  },
+  "skills": [
+    { "area": "Languages", "items": ["JavaScript", "TypeScript", "Python", "PHP", "SQL"] },
+    { "area": "Backend", "items": ["Node.js", "Express.js", "NestJS", "FastAPI", "GraphQL", "REST APIs"] },
+    { "area": "Frontend", "items": ["React.js", "Angular", "React Native"] },
+    { "area": "Databases", "items": ["PostgreSQL", "MySQL", "MongoDB", "Snowflake"] },
+    { "area": "Cloud & DevOps", "items": ["AWS", "Docker", "CI/CD", "Git", "GitLab", "Bitbucket"] },
+    { "area": "Architecture", "items": ["Microservices", "Distributed systems", "System design", "Event-driven architecture"] },
+    { "area": "AI & data", "items": ["LLMs (Llama 3, Phi-3, Gemma-2, Mistral, OpenAI API)", "Claude Code", "Data pipelines"] },
+    { "area": "Tools & platforms", "items": ["Jira", "Agile", "Postman", "Swagger", "Shopify", "WooCommerce", "Stripe", "Razorpay", "Tableau"] }
+  ],
+  "achievements": [
+    "Led and mentored engineering teams of up to 15 developers, setting up agile processes and CI/CD practices.",
+    "Key architect of Shopdotapp, which raised venture capital funding after a smooth technical launch.",
+    "Delivered cross-border SaaS platforms for clients in India, the UK, the Middle East, Africa and Indonesia."
+  ],
+  "education": [
+    { "degree": "Bachelor of Computer Applications (BCA)", "school": "Jagannath International Management School, Delhi", "years": "2014 – 2017" }
+  ]
+}

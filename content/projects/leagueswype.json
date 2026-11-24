@@ -1,0 +1,19 @@
+{
+  "title": "LeagueSwype: real-time fantasy sports",
+  "category": "professional",
+  "featured": true,
+  "order": 2,
+  "org": "Ziqonfox Technologies",
+  "summary": "Live match scoring with Yahoo data ingestion, secure payments and user management.",
+  "impact": "Scaled to 10,000+ concurrent users through high-traffic tournament launches.",
+  "tech": [
+    "NestJS",
+    "Node.js",
+    "Yahoo Data API",
+    "Secure payments"
+  ],
+  "problem": "The client needed a real-time fantasy gaming platform with near-zero-latency scoring, secure user management and seamless payment flows.",
+  "solution": "Built match-scoring modules and real-time data ingestion from Yahoo, with scalable NestJS backend services designed for high-traffic match windows.",
+  "result": "Scaled to support 10,000+ concurrent users, reduced critical downtime and supported smooth tournament launches.",
+  "links": []
+}
