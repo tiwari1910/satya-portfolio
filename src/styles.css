@@ -6,8 +6,8 @@
   --muted: #a19e95;
   --line: #3d3c37;
   --chip: #36352f;
-  --accent: #6ee7d3;
-  --accent-hover: #a7f3e6;
+  --accent: #fb923c;
+  --accent-hover: #fdba74;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -15,7 +15,7 @@
 }
 :root[data-theme="light"] {
   --bg: #fbfaf7; --text: #24272b; --heading: #15181b; --muted: #6b7178;
-  --line: #e7e3db; --chip: #f0ede6; --accent: #0f766e; --accent-hover: #0b5c56;
+  --line: #e7e3db; --chip: #f0ede6; --accent: #c2410c; --accent-hover: #9a3412;
   color-scheme: light;
 }
 
