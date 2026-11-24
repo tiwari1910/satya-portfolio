@@ -164,14 +164,17 @@ pages.push({
   path: '',
   body: (base) => `
 <section class="intro">
-  <div class="intro-head">
-    <img class="portrait" src="${base}photo.jpg" alt="Portrait of ${esc(profile.name)}" width="120" height="120">
-    <div>
+  <div class="intro-row">
+    <div class="intro-text">
       <h1>${esc(profile.greeting)}</h1>
       <p class="motto">${esc(profile.motto)}</p>
+      ${profile.bio.slice(0, 1).map((p) => `<p>${inline(p, base)}</p>`).join('')}
     </div>
+    <figure class="portrait">
+      <img src="${base}photo.jpg" alt="Portrait of ${esc(profile.name)}" width="480" height="600">
+    </figure>
   </div>
-  ${profile.bio.map((p) => `<p>${inline(p, base)}</p>`).join('\n  ')}
+  ${profile.bio.slice(1).map((p) => `<p>${inline(p, base)}</p>`).join('\n  ')}
   <ul class="facts">${profile.stats.map((s) => `<li><strong>${esc(s.value)}</strong> ${esc(s.label)}</li>`).join('')}</ul>
 </section>
 
