@@ -3,36 +3,70 @@
     "title": "Smart Claude Code model routing with code-graph risk scoring",
     "summary": "How Claude Code Router v2 reads the code a prompt touches, scores its risk and picks the right model, with honest limitations.",
     "where": "Hashnode",
-    "url": "https://devlore.hashnode.dev/claude-code-router"
+    "url": "https://devlore.hashnode.dev/claude-code-router",
+    "date": "2026-10-17",
+    "tags": [
+      "ai-engineering",
+      "claude-code",
+      "open-source"
+    ]
   },
   {
     "title": "How I route every Claude Code prompt to the right model",
     "summary": "The first version: a small Python hook that sends each prompt to Haiku, Sonnet or Opus, with the full code and test results.",
     "where": "Hashnode",
-    "url": "https://devlore.hashnode.dev/how-i-route-every-claude-code-prompt-to-the-right-model"
+    "url": "https://devlore.hashnode.dev/how-i-route-every-claude-code-prompt-to-the-right-model",
+    "date": "2026-10-05",
+    "tags": [
+      "ai-engineering",
+      "claude-code",
+      "python"
+    ]
   },
   {
     "title": "Why I almost downed a production database with a single SQL command",
     "summary": "Lessons from indexing a 1 TB table: concurrent indexes, disk headroom, partial indexes and partitioning.",
     "where": "LinkedIn",
-    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7479816790160719872/"
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7479816790160719872/",
+    "date": "2026-07-06",
+    "tags": [
+      "databases",
+      "postgresql",
+      "scalability"
+    ]
   },
   {
     "title": "Searching by similarity isn't remembering",
     "summary": "Why a vector database alone traps AI agents in loops, and how working, episodic and semantic memory fix it.",
     "where": "LinkedIn",
-    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7477688650546262016/"
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7477688650546262016/",
+    "date": "2026-06-30",
+    "tags": [
+      "ai-agents",
+      "system-design"
+    ]
   },
   {
     "title": "Stop defaulting to the biggest model",
     "summary": "LLMs vs small language models in production, and why a hybrid intent router wins on cost, latency and privacy.",
     "where": "LinkedIn",
-    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475872940312416256/"
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475872940312416256/",
+    "date": "2026-06-25",
+    "tags": [
+      "llm",
+      "slm",
+      "system-design"
+    ]
   },
   {
     "title": "Relational vs document databases: the lines are blurring",
     "summary": "Many-to-many relationships, schema-on-read vs schema-on-write, and data locality in modern database choices.",
     "where": "LinkedIn",
-    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475510557404581888/"
+    "url": "https://www.linkedin.com/feed/update/urn:li:activity:7475510557404581888/",
+    "date": "2026-06-24",
+    "tags": [
+      "databases",
+      "system-design"
+    ]
   }
 ]

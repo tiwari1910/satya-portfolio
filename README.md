@@ -1,6 +1,6 @@
 # satya-portfolio
 
-Personal portfolio of Satya Prakash Tiwari. It's a single static page built from JSON content files by a small Node script with no dependencies. Every push to `main` builds and deploys it to GitHub Pages.
+Personal portfolio of Satya Prakash Tiwari. It's a small multi-page static site (About, Experience, Projects, Writing) built from JSON content files by a small Node script with no dependencies. Every push to `main` builds and deploys it to GitHub Pages.
 
 ## Preview locally
 
@@ -14,7 +14,7 @@ Or just `node build.mjs` and open `dist/index.html`.
 
 | What | File |
 |---|---|
-| Name, intro, about, stats, skills, contact, highlights, education | `content/profile.json` |
+| Name, greeting, bio (supports `[text](url)` links), stats, skills, contact, highlights, education | `content/profile.json` |
 | Work history | `content/experience.json` |
 | Projects (one file each) | `content/projects/*.json` |
 | Certifications (one file each) | `content/certifications/*.json` |
@@ -44,7 +44,7 @@ Copy an existing file in `content/projects/`, rename it (the file name becomes t
 ```
 
 - `category`: `"personal"` goes under **Personal upskilling**, `"professional"` under **Professional experience**.
-- `featured: true` puts a professional project in the large top row.
+- `featured: true` lists a professional project under **Selected work** on the About page.
 - `order` sets the position within its group (lower comes first).
 
 ## Add a certification
@@ -53,13 +53,7 @@ Add a file to `content/certifications/` (see the README there). The newest certi
 
 ## Add a post
 
-Add an entry to `content/writing.json` with `title`, `summary`, `where` (e.g. `Hashnode` or `LinkedIn`) and `url`.
-
-## Add a photo
-
-Put `photo.jpg` in `public/`, then in `build.mjs` replace the avatar line
-`<div class="avatar" aria-hidden="true">${esc(initials)}</div>` with
-`<div class="avatar"><img src="photo.jpg" alt="${esc(profile.name)}"></div>`.
+Add an entry to `content/writing.json` with `title`, `date` (YYYY-MM-DD), `where` (e.g. `Hashnode` or `LinkedIn`), `url` and `tags`. Posts are grouped by year, newest first, and the latest four show on the About page.
 
 ## Publish
 

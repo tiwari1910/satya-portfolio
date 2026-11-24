@@ -11,10 +11,22 @@
     "Outside client work I keep learning in public, through open-source projects and writing about system design and AI engineering."
   ],
   "stats": [
-    { "value": "8.5+", "label": "years building production software" },
-    { "value": "15+", "label": "engineers led" },
-    { "value": "10k+", "label": "concurrent users supported" },
-    { "value": "11", "label": "client platforms delivered" }
+    {
+      "value": "8.5+",
+      "label": "years building production software"
+    },
+    {
+      "value": "15+",
+      "label": "engineers led"
+    },
+    {
+      "value": "10k+",
+      "label": "concurrent users supported"
+    },
+    {
+      "value": "11",
+      "label": "client platforms delivered"
+    }
   ],
   "contact": {
     "email": "satya.prakash259@gmail.com",
@@ -23,14 +35,86 @@
     "blog": "https://devlore.hashnode.dev/"
   },
   "skills": [
-    { "area": "Languages", "items": ["JavaScript", "TypeScript", "Python", "PHP", "SQL"] },
-    { "area": "Backend", "items": ["Node.js", "Express.js", "NestJS", "FastAPI", "GraphQL", "REST APIs"] },
-    { "area": "Frontend", "items": ["React.js", "Angular", "React Native"] },
-    { "area": "Databases", "items": ["PostgreSQL", "MySQL", "MongoDB", "Snowflake"] },
-    { "area": "Cloud & DevOps", "items": ["AWS", "Docker", "CI/CD", "Git", "GitLab", "Bitbucket"] },
-    { "area": "Architecture", "items": ["Microservices", "Distributed systems", "System design", "Event-driven architecture"] },
-    { "area": "AI & data", "items": ["LLMs (Llama 3, Phi-3, Gemma-2, Mistral, OpenAI API)", "Claude Code", "Data pipelines"] },
-    { "area": "Tools & platforms", "items": ["Jira", "Agile", "Postman", "Swagger", "Shopify", "WooCommerce", "Stripe", "Razorpay", "Tableau"] }
+    {
+      "area": "Languages",
+      "items": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "PHP",
+        "SQL"
+      ]
+    },
+    {
+      "area": "Backend",
+      "items": [
+        "Node.js",
+        "Express.js",
+        "NestJS",
+        "FastAPI",
+        "GraphQL",
+        "REST APIs"
+      ]
+    },
+    {
+      "area": "Frontend",
+      "items": [
+        "React.js",
+        "Angular",
+        "React Native"
+      ]
+    },
+    {
+      "area": "Databases",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "Snowflake"
+      ]
+    },
+    {
+      "area": "Cloud & DevOps",
+      "items": [
+        "AWS",
+        "Docker",
+        "CI/CD",
+        "Git",
+        "GitLab",
+        "Bitbucket"
+      ]
+    },
+    {
+      "area": "Architecture",
+      "items": [
+        "Microservices",
+        "Distributed systems",
+        "System design",
+        "Event-driven architecture"
+      ]
+    },
+    {
+      "area": "AI & data",
+      "items": [
+        "LLMs (Llama 3, Phi-3, Gemma-2, Mistral, OpenAI API)",
+        "Claude Code",
+        "Data pipelines"
+      ]
+    },
+    {
+      "area": "Tools & platforms",
+      "items": [
+        "Jira",
+        "Agile",
+        "Postman",
+        "Swagger",
+        "Shopify",
+        "WooCommerce",
+        "Stripe",
+        "Razorpay",
+        "Tableau"
+      ]
+    }
   ],
   "achievements": [
     "Led and mentored engineering teams of up to 15 developers, setting up agile processes and CI/CD practices.",
@@ -38,6 +122,18 @@
     "Delivered cross-border SaaS platforms for clients in India, the UK, the Middle East, Africa and Indonesia."
   ],
   "education": [
-    { "degree": "Bachelor of Computer Applications (BCA)", "school": "Jagannath International Management School, Delhi", "years": "2014 – 2017" }
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "school": "Jagannath International Management School, Delhi",
+      "years": "2014 – 2017"
+    }
+  ],
+  "greeting": "Hi, I'm Satya",
+  "motto": "backend systems, distributed systems and practical AI. always shipping.",
+  "bio": [
+    "I'm a software engineer and technical lead with 8.5+ years of building backend-heavy, high-scale systems. Currently I'm a Senior Software Engineer at [Spark Eighteen](experience/#spark-eighteen), where I build microservices and data pipelines for enterprise SaaS, including a [pharma compliance platform](projects/#pharma-saas) and a [VC deal-sourcing CRM](projects/#vc-crm) with an AI chatbot.",
+    "Before that I was a Technical Lead at Ziqonfox Technologies, leading a team of 15+ engineers on a [B2B e-commerce engine](projects/#shopdotapp) that went on to raise venture funding, and a [fantasy sports platform](projects/#leagueswype) that handled 10,000+ concurrent users.",
+    "On the side, I build [Claude Code Router](projects/#claude-code-router), an open-source tool that routes every Claude Code prompt to the cheapest model that can handle it. It has 1,100+ downloads on PyPI and is also on npm.",
+    "I write about system design, databases and AI engineering on [my blog](https://devlore.hashnode.dev/) and [LinkedIn](https://www.linkedin.com/in/satya-prakash-be/). My work spans e-commerce, healthcare, logistics, recruitment and workflow automation, for clients in India, the UK, the Middle East, Africa and Indonesia."
   ]
 }

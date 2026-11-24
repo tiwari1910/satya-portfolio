@@ -1,7 +1,7 @@
 // Builds the static site into ./dist from the JSON files in ./content.
 // No dependencies: run with `node build.mjs`.
 import { readFileSync, readdirSync, mkdirSync, writeFileSync, cpSync, rmSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, dirname } from 'node:path';
 
 const root = new URL('.', import.meta.url).pathname;
 const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
@@ -15,258 +15,295 @@ const readDir = (dir) => {
 
 const profile = read('content/profile.json');
 const experience = read('content/experience.json');
-const writing = read('content/writing.json');
+const writing = read('content/writing.json').sort((a, b) => String(b.date).localeCompare(String(a.date)));
 const projects = readDir('content/projects').sort((a, b) => (a.order ?? 99) - (b.order ?? 99));
 const certifications = readDir('content/certifications').sort((a, b) => String(b.date).localeCompare(String(a.date)));
 
-const esc = (s = '') =>
-  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
-
-const icons = {
-  github: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.26 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>',
-  linkedin: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>',
-  mail: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg>',
-  pen: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4zM13.5 6.5l4 4"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg>',
-  sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
-  moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>',
-};
-
-const initials = profile.name.split(' ').filter(Boolean).map((w) => w[0]).slice(0, 2).join('');
-const tags = (list) => `<ul class="tags">${list.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`;
-const linkHost = (url) => new URL(url).host.replace(/^www\./, '');
-
-const projectCard = (p, size) => `
-<article class="project ${size}" id="project-${esc(p.slug)}">
-  <div class="project-head">
-    <p class="project-org">${esc(p.org)}</p>
-    <h4>${esc(p.title)}</h4>
-  </div>
-  <p class="project-summary">${esc(p.summary)}</p>
-  <p class="project-impact"><span>Impact</span>${esc(p.impact)}</p>
-  ${tags(p.tech)}
-  <details>
-    <summary>Problem, solution &amp; result</summary>
-    <dl>
-      <dt>Problem</dt><dd>${esc(p.problem)}</dd>
-      <dt>Solution</dt><dd>${esc(p.solution)}</dd>
-      <dt>Result</dt><dd>${esc(p.result)}</dd>
-    </dl>
-  </details>
-  ${p.links?.length ? `<p class="project-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ${icons.arrow}</a>`).join('')}</p>` : ''}
-</article>`;
-
 const professional = projects.filter((p) => p.category === 'professional');
 const personal = projects.filter((p) => p.category === 'personal');
-const featured = professional.filter((p) => p.featured);
-const more = professional.filter((p) => !p.featured);
 
-const navItems = [
-  ['about', 'About'],
-  ['experience', 'Experience'],
-  ['projects', 'Projects'],
-  writing.length && ['writing', 'Writing'],
-  certifications.length && ['certifications', 'Certifications'],
-  ['contact', 'Contact'],
-].filter(Boolean);
+// ---------- helpers ----------
+const esc = (s = '') =>
+  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+// [text](url) -> link. Relative urls get the page's base prefix; external ones open in a new tab.
+const inline = (text, base) =>
+  esc(text).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, label, url) =>
+    /^https?:/.test(url) ? `<a href="${url}" target="_blank" rel="noopener">${label}</a>` : `<a href="${base}${url}">${label}</a>`
+  );
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmtDay = (iso) => {
+  const [, m, d] = String(iso).split('-');
+  return m && d ? `${months[+m - 1]} ${d}` : '';
+};
+const year = (iso) => String(iso).slice(0, 4);
+const hashtags = (list = []) => list.map((t) => `<span class="hash">#${esc(slugify(t))}</span>`).join('');
 
-const description = `${profile.name}: ${profile.role}. ${profile.tagline}.`;
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: profile.name,
-  jobTitle: profile.role,
-  url: profile.siteUrl,
-  address: { '@type': 'PostalAddress', addressLocality: profile.location },
-  sameAs: [profile.contact.linkedin, profile.contact.github, profile.contact.blog].filter(Boolean),
-  knowsAbout: profile.skills.flatMap((s) => s.items).slice(0, 20),
+const icons = {
+  sun: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>',
+  ext: '<svg viewBox="0 0 24 24" aria-hidden="true" class="ext"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg>',
 };
 
-const html = `<!doctype html>
+const nav = [
+  ['', 'About'],
+  ['experience/', 'Experience'],
+  ['projects/', 'Projects'],
+  ['writing/', 'Writing'],
+];
+
+// ---------- layout ----------
+function page({ path, title, description, body }) {
+  const depth = path.split('/').filter(Boolean).length;
+  const base = depth ? '../'.repeat(depth) : '';
+  const fullTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.role}`;
+  const desc = description || `${profile.name}: ${profile.role}. ${profile.tagline}.`;
+  const url = `${profile.siteUrl}/${path}`;
+  const jsonLd = path
+    ? ''
+    : `<script type="application/ld+json">${JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: profile.name,
+        jobTitle: profile.role,
+        url: profile.siteUrl,
+        address: { '@type': 'PostalAddress', addressLocality: profile.location },
+        sameAs: [profile.contact.linkedin, profile.contact.github, profile.contact.blog].filter(Boolean),
+      })}</script>`;
+  return `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(profile.name)} · ${esc(profile.role)}</title>
-<meta name="description" content="${esc(description)}">
-<link rel="canonical" href="${esc(profile.siteUrl)}/">
-<meta property="og:type" content="profile">
-<meta property="og:title" content="${esc(profile.name)} · ${esc(profile.role)}">
-<meta property="og:description" content="${esc(profile.tagline)}">
-<meta property="og:url" content="${esc(profile.siteUrl)}/">
+<title>${esc(fullTitle)}</title>
+<meta name="description" content="${esc(desc)}">
+<link rel="canonical" href="${esc(url)}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(fullTitle)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:url" content="${esc(url)}">
 <meta property="og:image" content="${esc(profile.siteUrl)}/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="${base}favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="${base}styles.css">
 <script>try{const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+${jsonLd}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
-  <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="${esc(profile.name)}, back to top"><span class="brand-mark">${esc(initials)}</span><span class="brand-name">${esc(profile.name)}</span></a>
-    <nav aria-label="Sections"><ul>${navItems.map(([id, label]) => `<li><a href="#${id}">${label}</a></li>`).join('')}</ul></nav>
+  <div class="col header-inner">
+    <a class="brand" href="${base || './'}">${esc(profile.name)}</a>
+    <nav aria-label="Main">
+      <ul>${nav
+        .map(([p, label]) => `<li><a href="${base}${p || './'}"${p === path ? ' aria-current="page"' : ''}>${label}</a></li>`)
+        .join('')}</ul>
+    </nav>
     <button class="theme-toggle" type="button" aria-label="Toggle dark mode"><span class="i-sun">${icons.sun}</span><span class="i-moon">${icons.moon}</span></button>
   </div>
 </header>
-
-<main id="main">
-<section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <p class="kicker">${esc(profile.role)}</p>
-      <h1>${esc(profile.name)}</h1>
-      <p class="tagline">${esc(profile.tagline)}</p>
-      <p class="intro">${esc(profile.intro)}</p>
-      <div class="cta">
-        <a class="btn primary" href="#projects">View my work</a>
-        <a class="btn" href="#contact">Get in touch</a>
-        <a class="icon-btn" href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener" aria-label="LinkedIn">${icons.linkedin}</a>
-        <a class="icon-btn" href="${esc(profile.contact.github)}" target="_blank" rel="noopener" aria-label="GitHub">${icons.github}</a>
-      </div>
-    </div>
-    <aside class="hero-card" aria-label="Currently">
-      <div class="avatar" aria-hidden="true">${esc(initials)}</div>
-      <p class="hero-card-loc">${esc(profile.location)}</p>
-      <div class="terminal" aria-label="Latest open-source project">
-        <p class="term-bar"><span></span><span></span><span></span></p>
-<pre><code><span class="c"># my open-source router for Claude Code</span>
-<span class="p">$</span> pip install claude-code-router
-<span class="c"># every prompt gets the right model:</span>
-"fix typo in README"      <span class="o">→ haiku · low</span>
-"migrate payments schema" <span class="o">→ opus · xhigh</span></code></pre>
-      </div>
-    </aside>
-  </div>
-  <div class="wrap">
-    <ul class="stats">${profile.stats.map((s) => `<li><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></li>`).join('')}</ul>
-  </div>
-</section>
-
-<section id="about" class="section">
-  <div class="wrap two-col">
-    <div>
-      <h2>About</h2>
-      ${profile.about.map((p) => `<p>${esc(p)}</p>`).join('\n      ')}
-      <h3 class="sub">Highlights</h3>
-      <ul class="checks">${profile.achievements.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>
-      <h3 class="sub">Education</h3>
-      ${profile.education.map((e) => `<p class="edu"><strong>${esc(e.degree)}</strong><br>${esc(e.school)} · ${esc(e.years)}</p>`).join('')}
-    </div>
-    <div>
-      <h2 class="h2-alt">Skills</h2>
-      <dl class="skills">${profile.skills.map((s) => `<div><dt>${esc(s.area)}</dt><dd>${tags(s.items)}</dd></div>`).join('')}</dl>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="section alt">
-  <div class="wrap">
-    <h2>Experience</h2>
-    <ol class="timeline">${experience
-      .map(
-        (e) => `
-      <li>
-        <div class="tl-when">${esc(e.start)} – ${esc(e.end)}</div>
-        <div class="tl-body">
-          <h3>${esc(e.role)}</h3>
-          <p class="tl-company">${esc(e.company)}</p>
-          <ul>${e.highlights.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
-        </div>
-      </li>`
-      )
-      .join('')}
-    </ol>
-  </div>
-</section>
-
-<section id="projects" class="section">
-  <div class="wrap">
-    <h2>Projects</h2>
-    <p class="lede">Two kinds of work: platforms I've built for clients, and things I build on my own to keep learning.</p>
-
-    <h3 class="group">Personal upskilling</h3>
-    <div class="grid one">${personal.map((p) => projectCard(p, 'spotlight')).join('')}</div>
-
-    <h3 class="group">Professional experience</h3>
-    <div class="grid two">${featured.map((p) => projectCard(p, 'featured')).join('')}</div>
-    <div class="grid three">${more.map((p) => projectCard(p, 'compact')).join('')}</div>
-  </div>
-</section>
-${
-  writing.length
-    ? `
-<section id="writing" class="section alt">
-  <div class="wrap">
-    <h2>Writing</h2>
-    <p class="lede">Notes on system design and AI engineering, on <a href="${esc(profile.contact.blog)}" target="_blank" rel="noopener">my blog</a> and LinkedIn.</p>
-    <div class="grid three">${writing
-      .map(
-        (w) => `
-      <a class="post" href="${esc(w.url)}" target="_blank" rel="noopener">
-        <span class="post-where">${esc(w.where)}</span>
-        <span class="post-title">${esc(w.title)}</span>
-        <span class="post-summary">${esc(w.summary)}</span>
-        <span class="post-go">Read ${icons.arrow}</span>
-      </a>`
-      )
-      .join('')}
-    </div>
-  </div>
-</section>`
-    : ''
-}
-${
-  certifications.length
-    ? `
-<section id="certifications" class="section">
-  <div class="wrap">
-    <h2>Certifications</h2>
-    <ul class="certs">${certifications
-      .map(
-        (c) => `<li>
-        <div class="cert-main"><strong>${esc(c.title)}</strong><span>${esc(c.issuer)} · ${esc(c.displayDate || c.date)}</span></div>
-        ${c.url ? `<a class="cert-link" href="${esc(c.url)}" target="_blank" rel="noopener">Credential ${icons.arrow}</a>` : ''}
-        ${c.includes?.length ? `<ul class="cert-includes">${c.includes.map((i) => `<li>${i.url ? `<a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>` : esc(i.title)}</li>`).join('')}</ul>` : ''}
-      </li>`
-      )
-      .join('')}</ul>
-  </div>
-</section>`
-    : ''
-}
-<section id="contact" class="section contact">
-  <div class="wrap">
-    <h2>Get in touch</h2>
-    <p class="lede">I'm happy to talk about backend, platform and AI engineering roles. Email is the quickest way to reach me.</p>
-    <ul class="contact-list">
-      <li><a href="mailto:${esc(profile.contact.email)}">${icons.mail}<span>${esc(profile.contact.email)}</span></a></li>
-      <li><a href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener">${icons.linkedin}<span>${esc(linkHost(profile.contact.linkedin))}${esc(new URL(profile.contact.linkedin).pathname.replace(/\/$/, ''))}</span></a></li>
-      <li><a href="${esc(profile.contact.github)}" target="_blank" rel="noopener">${icons.github}<span>${esc(linkHost(profile.contact.github))}${esc(new URL(profile.contact.github).pathname)}</span></a></li>
-      <li><a href="${esc(profile.contact.blog)}" target="_blank" rel="noopener">${icons.pen}<span>${esc(linkHost(profile.contact.blog))}</span></a></li>
-    </ul>
-  </div>
-</section>
+<main id="main" class="col">
+${body(base)}
 </main>
-
-<footer class="site-footer"><div class="wrap">© ${new Date().getFullYear()} ${esc(profile.name)} · ${esc(profile.location)}</div></footer>
+<footer class="site-footer">
+  <div class="col footer-inner">
+    <p class="footer-links">
+      <a href="mailto:${esc(profile.contact.email)}">Email</a>
+      <a href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="${esc(profile.contact.github)}" target="_blank" rel="noopener">GitHub</a>
+      <a href="${esc(profile.contact.blog)}" target="_blank" rel="noopener">Blog</a>
+    </p>
+    <p>© ${new Date().getFullYear()} ${esc(profile.name)} · ${esc(profile.location)}</p>
+  </div>
+</footer>
 <script>
-const b=document.querySelector('.theme-toggle');
-b.addEventListener('click',()=>{const d=document.documentElement;const dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',d.dataset.theme)}catch(e){}});
+document.querySelector('.theme-toggle').addEventListener('click',()=>{const d=document.documentElement;const dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',d.dataset.theme)}catch(e){}});
+document.querySelectorAll('[data-filter-group]').forEach(g=>{const list=document.getElementById(g.dataset.filterGroup);g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.filter;list.querySelectorAll('[data-cat]').forEach(el=>{el.hidden=f!=='all'&&el.dataset.cat!==f});list.querySelectorAll('[data-group]').forEach(h=>{h.hidden=f!=='all'&&h.dataset.group!==f})})});
 </script>
 </body>
 </html>
 `;
+}
 
+// ---------- shared fragments ----------
+const writingRow = (w) => `
+  <li class="entry">
+    <time class="entry-date" datetime="${esc(w.date)}">${fmtDay(w.date)}</time>
+    <div class="entry-body">
+      <a class="entry-title" href="${esc(w.url)}" target="_blank" rel="noopener">${esc(w.title)}</a>
+      <p class="entry-meta"><span class="chip">${esc(w.where)}</span>${hashtags(w.tags)}</p>
+    </div>
+  </li>`;
+
+const projectRow = (p) => `
+  <li class="entry project" id="${esc(p.slug)}" data-cat="${esc(p.category)}">
+    <span class="entry-date">${p.category === 'personal' ? 'Personal' : 'Client'}</span>
+    <div class="entry-body">
+      <h3 class="entry-title">${esc(p.title)}</h3>
+      <p class="entry-org">${esc(p.org)}</p>
+      <p class="entry-summary">${esc(p.summary)}</p>
+      <p class="entry-impact"><strong>Impact.</strong> ${esc(p.impact)}</p>
+      <details>
+        <summary>Problem, solution and result</summary>
+        <p><strong>Problem.</strong> ${esc(p.problem)}</p>
+        <p><strong>Solution.</strong> ${esc(p.solution)}</p>
+        <p><strong>Result.</strong> ${esc(p.result)}</p>
+      </details>
+      <p class="entry-meta">${hashtags(p.tech)}</p>
+      ${p.links?.length ? `<p class="entry-links">${p.links.map((l) => `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}${icons.ext}</a>`).join('')}</p>` : ''}
+    </div>
+  </li>`;
+
+// ---------- pages ----------
+const pages = [];
+
+pages.push({
+  path: '',
+  body: (base) => `
+<section class="intro">
+  <h1>${esc(profile.greeting)}</h1>
+  <p class="motto">${esc(profile.motto)}</p>
+  ${profile.bio.map((p) => `<p>${inline(p, base)}</p>`).join('\n  ')}
+  <ul class="facts">${profile.stats.map((s) => `<li><strong>${esc(s.value)}</strong> ${esc(s.label)}</li>`).join('')}</ul>
+</section>
+
+<section>
+  <h2 class="section-title">Selected work</h2>
+  <ul class="list">${[...personal, ...professional.filter((p) => p.featured)]
+    .map(
+      (p) => `
+    <li class="list-item">
+      <a href="${base}projects/#${esc(p.slug)}">${esc(p.title)}</a>
+      <span class="list-note">${esc(p.summary)}</span>
+    </li>`
+    )
+    .join('')}
+  </ul>
+  <p class="more"><a href="${base}projects/">All ${projects.length} projects →</a></p>
+</section>
+
+<section>
+  <h2 class="section-title">Recent writing</h2>
+  <ul class="entries">${writing.slice(0, 4).map(writingRow).join('')}</ul>
+  <p class="more"><a href="${base}writing/">All writing →</a></p>
+</section>
+
+<section>
+  <h2 class="section-title">Skills</h2>
+  <dl class="skills">${profile.skills.map((s) => `<div><dt>${esc(s.area)}</dt><dd>${s.items.map(esc).join(', ')}</dd></div>`).join('')}</dl>
+</section>
+
+<section>
+  <h2 class="section-title">Get in touch</h2>
+  <p>I'm always happy to talk about backend, platform and AI engineering. The quickest way to reach me is <a href="mailto:${esc(profile.contact.email)}">${esc(profile.contact.email)}</a>, or find me on <a href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>.</p>
+</section>`,
+});
+
+pages.push({
+  path: 'experience/',
+  title: 'Experience',
+  description: `${profile.name}'s work experience, certifications and education.`,
+  body: () => `
+<h1 class="page-title">Experience</h1>
+<p class="page-lede">8.5+ years across product companies and agencies, from junior engineer to technical lead.</p>
+
+<ol class="timeline">${experience
+    .map(
+      (e) => `
+  <li id="${slugify(e.company)}">
+    <p class="tl-when">${esc(e.start)} – ${esc(e.end)}</p>
+    <h2 class="tl-role">${esc(e.role)}</h2>
+    <p class="tl-company">${esc(e.company)}</p>
+    <ul>${e.highlights.map((h) => `<li>${esc(h)}</li>`).join('')}</ul>
+  </li>`
+    )
+    .join('')}
+</ol>
+
+<section>
+  <h2 class="section-title">Highlights</h2>
+  <ul class="plain">${profile.achievements.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>
+</section>
+${
+  certifications.length
+    ? `
+<section id="certifications">
+  <h2 class="section-title">Certifications</h2>
+  <ul class="entries">${certifications
+    .map(
+      (c) => `
+    <li class="entry">
+      <span class="entry-date">${esc(c.displayDate || c.date)}</span>
+      <div class="entry-body">
+        ${c.url ? `<a class="entry-title" href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>` : `<span class="entry-title">${esc(c.title)}</span>`}
+        <p class="entry-org">${esc(c.issuer)}</p>
+        ${c.includes?.length ? `<p class="entry-meta">${c.includes.map((i) => (i.url ? `<a class="hash" href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.title)}</a>` : `<span class="hash">${esc(i.title)}</span>`)).join('')}</p>` : ''}
+      </div>
+    </li>`
+    )
+    .join('')}
+  </ul>
+</section>`
+    : ''
+}
+<section>
+  <h2 class="section-title">Education</h2>
+  ${profile.education.map((e) => `<p><strong>${esc(e.degree)}</strong><br><span class="muted">${esc(e.school)} · ${esc(e.years)}</span></p>`).join('')}
+</section>`,
+});
+
+pages.push({
+  path: 'projects/',
+  title: 'Projects',
+  description: `Client platforms and open-source projects built by ${profile.name}.`,
+  body: () => `
+<h1 class="page-title">Projects <span class="count">(${projects.length})</span></h1>
+<p class="page-lede">Two kinds of work: platforms I've built for clients, and things I build on my own to keep learning.</p>
+<div class="filters" data-filter-group="project-list" role="group" aria-label="Filter projects">
+  <button type="button" data-filter="all" aria-pressed="true">All <span>${projects.length}</span></button>
+  <button type="button" data-filter="professional" aria-pressed="false">Professional <span>${professional.length}</span></button>
+  <button type="button" data-filter="personal" aria-pressed="false">Personal upskilling <span>${personal.length}</span></button>
+</div>
+<div id="project-list">
+  <h2 class="group-title" data-group="personal">Personal upskilling</h2>
+  <ul class="entries">${personal.map(projectRow).join('')}</ul>
+  <h2 class="group-title" data-group="professional">Professional experience</h2>
+  <ul class="entries">${professional.map(projectRow).join('')}</ul>
+</div>`,
+});
+
+pages.push({
+  path: 'writing/',
+  title: 'Writing',
+  description: `Notes on system design, databases and AI engineering by ${profile.name}.`,
+  body: () => {
+    const years = [...new Set(writing.map((w) => year(w.date)))];
+    return `
+<h1 class="page-title">Writing <span class="count">(${writing.length})</span></h1>
+<p class="page-lede">Notes on system design, databases and AI engineering, from <a href="${esc(profile.contact.blog)}" target="_blank" rel="noopener">my blog</a> and <a href="${esc(profile.contact.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>.</p>
+${years
+  .map((y) => {
+    const items = writing.filter((w) => year(w.date) === y);
+    return `<h2 class="year">${y} <span class="count">(${items.length})</span></h2>
+<ul class="entries">${items.map(writingRow).join('')}</ul>`;
+  })
+  .join('\n')}`;
+  },
+});
+
+// ---------- write ----------
 const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 cpSync(join(root, 'public'), dist, { recursive: true });
 cpSync(join(root, 'src/styles.css'), join(dist, 'styles.css'));
-writeFileSync(join(dist, 'index.html'), html);
+for (const p of pages) {
+  const file = join(dist, p.path, 'index.html');
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, page(p));
+}
 writeFileSync(join(dist, '.nojekyll'), '');
-console.log(`Built dist/: ${projects.length} projects, ${experience.length} roles, ${writing.length} posts, ${certifications.length} certifications`);
+console.log(`Built ${pages.length} pages: ${projects.length} projects, ${experience.length} roles, ${writing.length} posts, ${certifications.length} certifications`);
