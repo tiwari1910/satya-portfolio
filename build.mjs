@@ -120,7 +120,8 @@ ${body(base)}
   </div>
 </footer>
 <script>
-document.querySelector('.theme-toggle').addEventListener('click',()=>{const d=document.documentElement;const dark=d.dataset.theme?d.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;d.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',d.dataset.theme)}catch(e){}});
+document.querySelector('.theme-toggle').addEventListener('click',()=>{const d=document.documentElement;const dark=d.dataset.theme!=='light';d.dataset.theme=dark?'light':'dark';try{localStorage.setItem('theme',d.dataset.theme)}catch(e){}});
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.querySelectorAll('video[autoplay]').forEach(v=>{v.removeAttribute('autoplay');v.pause()});
 document.querySelectorAll('[data-filter-group]').forEach(g=>{const list=document.getElementById(g.dataset.filterGroup);g.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));const f=b.dataset.filter;list.querySelectorAll('[data-cat]').forEach(el=>{el.hidden=f!=='all'&&el.dataset.cat!==f});list.querySelectorAll('[data-group]').forEach(h=>{h.hidden=f!=='all'&&h.dataset.group!==f})})});
 </script>
 </body>
@@ -171,7 +172,10 @@ pages.push({
       ${profile.bio.slice(0, 1).map((p) => `<p>${inline(p, base)}</p>`).join('')}
     </div>
     <figure class="portrait">
-      <img src="${base}photo.jpg" alt="Portrait of ${esc(profile.name)}" width="480" height="600">
+      <video autoplay muted loop playsinline preload="metadata" poster="${base}waving-poster.jpg" width="480" height="692" aria-label="${esc(profile.name)} waving hello">
+        <source src="${base}waving.webm" type="video/webm">
+        <source src="${base}waving.mp4" type="video/mp4">
+      </video>
     </figure>
   </div>
   ${profile.bio.slice(1).map((p) => `<p>${inline(p, base)}</p>`).join('\n  ')}

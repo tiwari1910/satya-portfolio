@@ -1,28 +1,22 @@
 :root {
-  --bg: #fbfaf7;
-  --text: #24272b;
-  --heading: #15181b;
-  --muted: #6b7178;
-  --line: #e7e3db;
-  --chip: #f0ede6;
-  --accent: #0f766e;
-  --accent-hover: #0b5c56;
+  /* Dark is the default: a warm charcoal that matches the background of the waving video. */
+  --bg: #2b2a26;
+  --text: #dcdad3;
+  --heading: #f4f2ec;
+  --muted: #a19e95;
+  --line: #3d3c37;
+  --chip: #36352f;
+  --accent: #6ee7d3;
+  --accent-hover: #a7f3e6;
   --serif: "Newsreader", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #17191b; --text: #d9dcdf; --heading: #f1f3f4; --muted: #8d949b;
-    --line: #2b2f33; --chip: #24282b; --accent: #5eead4; --accent-hover: #99f6e4;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #17191b; --text: #d9dcdf; --heading: #f1f3f4; --muted: #8d949b;
-  --line: #2b2f33; --chip: #24282b; --accent: #5eead4; --accent-hover: #99f6e4;
   color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #fbfaf7; --text: #24272b; --heading: #15181b; --muted: #6b7178;
+  --line: #e7e3db; --chip: #f0ede6; --accent: #0f766e; --accent-hover: #0b5c56;
+  color-scheme: light;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -53,13 +47,9 @@ nav a[aria-current="page"] { color: var(--heading); border-bottom-color: var(--a
 .theme-toggle { display: grid; place-items: center; width: 34px; height: 34px; border: 0; border-radius: 8px; background: transparent; color: var(--muted); cursor: pointer; }
 .theme-toggle:hover { color: var(--heading); background: var(--chip); }
 .i-sun, .i-moon { line-height: 0; }
-.i-moon { display: none; }
-:root[data-theme="dark"] .i-sun { display: none; }
-:root[data-theme="dark"] .i-moon { display: block; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .i-sun { display: none; }
-  :root:not([data-theme="light"]) .i-moon { display: block; }
-}
+.i-sun { display: none; }
+:root[data-theme="light"] .i-sun { display: block; }
+:root[data-theme="light"] .i-moon { display: none; }
 
 /* Main */
 main.col { padding-top: 56px; padding-bottom: 40px; }
@@ -67,8 +57,13 @@ section { margin-top: 56px; }
 .intro { margin-top: 0; }
 .intro-row { display: flex; align-items: flex-start; gap: 36px; margin-bottom: 4px; }
 .intro-text { flex: 1 1 auto; min-width: 0; }
-.portrait { flex: 0 0 210px; margin: 6px 0 0; }
-.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(0, 0, 0, .08); }
+.portrait { flex: 0 0 240px; margin: -12px -16px 0 0; }
+.portrait video { display: block; width: 100%; height: auto; aspect-ratio: 480 / 692; object-fit: cover; background: var(--bg);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 78%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 24%, #000 76%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 78%, transparent);
+  mask-composite: intersect; }
+:root[data-theme="light"] .portrait video { border-radius: 16px; -webkit-mask-image: none; mask-image: none; }
 .intro h1 { font: 600 clamp(34px, 6vw, 44px)/1.15 var(--serif); letter-spacing: -0.01em; }
 .motto { font: italic 500 clamp(20px, 3.2vw, 24px)/1.4 var(--serif); color: var(--accent); margin: 10px 0 28px; }
 .facts { list-style: none; padding: 16px 0 0; margin: 28px 0 0; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 15px; color: var(--muted); }
@@ -163,6 +158,6 @@ details p { margin-bottom: .7em; }
   main.col { padding-top: 36px; }
   .entry { grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .intro-row { flex-direction: column-reverse; gap: 20px; }
-  .portrait { flex: none; width: 150px; margin: 0; }
+  .portrait { flex: none; width: 170px; margin: 0 0 -8px -14px; }
   .skills div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
 }
