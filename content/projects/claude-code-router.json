@@ -4,8 +4,8 @@
   "featured": true,
   "order": 1,
   "org": "Open source · personal project",
-  "summary": "Routes every Claude Code prompt to the cheapest model and effort level that can handle it.",
-  "impact": "1,100+ PyPI downloads; 98% task success with an estimated 78% saving vs running everything on Opus (my own 60-task trial).",
+  "summary": "Sends each Claude Code task to the cheapest model and effort level that can handle it.",
+  "impact": "2,000+ PyPI downloads plus an npm package; 98% task success with an estimated 78% saving vs running everything on Opus (my own 60-task trial).",
   "tech": [
     "Python",
     "tree-sitter",
@@ -15,7 +15,7 @@
   ],
   "problem": "Running one model for everything in Claude Code meant either paying Opus prices for simple lookups like \"where is the login handler?\" or getting confident, shallow answers from Haiku on hard bugs.",
   "solution": "A local, rule-based router that classifies each task (question, bug fix, feature, migration, security, design), finds the code it touches with a tree-sitter code graph, and scores risk from dependents, complexity, test coverage, change frequency and critical paths such as auth or payments. It picks one of six tiers from Haiku/low to Opus/xhigh, learns from past outcomes, and shows usage in a dashboard. v1 was a keyword-based Python hook; v2 added the code graph and learning; v0.2.1 added code-aware routing, Haiku change-size prediction and 48 regression prompts.",
-  "result": "Published on PyPI and npm with 1,100+ downloads. Right-sized models for each task, with no extra API calls to decide.",
+  "result": "Published on PyPI and npm with 2,000+ downloads. Right-sized models for each task, with no extra API calls to decide.",
   "links": [
     {
       "label": "GitHub",

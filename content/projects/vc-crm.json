@@ -4,10 +4,11 @@
   "featured": true,
   "order": 4,
   "org": "Spark Eighteen",
-  "summary": "Lead generation, deal tracking, Chrome plug-ins and a WhatsApp chatbot for a venture capital partner.",
+  "summary": "Lead generation, deal tracking, Chrome plug-ins and an AI-powered WhatsApp chatbot for a venture capital firm.",
   "impact": "35% better deal-sourcing efficiency.",
   "tech": [
     "Node.js",
+    "LLMs",
     "WhatsApp API",
     "AI chatbots",
     "CRM automation"

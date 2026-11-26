@@ -1,18 +1,18 @@
 {
   "name": "Satya Prakash Tiwari",
-  "role": "Senior Software Engineer & Technical Lead",
-  "tagline": "Backend engineering · Distributed systems · Scalable SaaS · AI integrations",
+  "role": "Senior Software Engineer (SDE-2) · Agentic AI & LLM Systems",
+  "tagline": "Agentic AI & LLM systems · AI solution architecture · Backend & distributed systems",
   "location": "Lucknow, India",
   "siteUrl": "https://tiwari1910.github.io/satya-portfolio",
-  "intro": "I design and ship scalable backend systems, microservices and SaaS platforms. Over 8.5 years I've led teams of 15+ engineers, built platforms serving 10,000+ concurrent users, and integrated LLMs like Llama 3 and OpenAI into real products for clients across e-commerce, healthcare and logistics.",
+  "intro": "I design and build AI systems that work in production, not just in demos. Over 9+ years I've architected backend platforms, led teams of 15+ engineers and scaled systems to 10,000+ concurrent users. Today I build agentic AI systems and integrate LLMs into enterprise CRM and SaaS products with Python, Node.js, NestJS, PostgreSQL and AWS.",
   "about": [
-    "I'm a backend-focused full-stack engineer who enjoys turning messy business problems into reliable systems. My work spans B2B e-commerce, fantasy sports, healthcare compliance, recruitment, logistics and workflow automation.",
-    "Lately I've been focused on bringing AI into real products: integrating open-source and proprietary LLMs into CRMs and chatbots, and building my own developer tooling around AI coding assistants, such as Claude Code Router.",
-    "Outside client work I keep learning in public, through open-source projects and writing about system design and AI engineering."
+    "I'm a Senior Software Engineer (SDE-2) who approaches AI work as a solution architect, not just an implementer: turning a business problem into an AI architecture, deciding where an LLM helps and where plain code is safer, and making the parts fit together.",
+    "That covers agentic workflows with tool calling, guardrails, evaluation and human review; retrieval (RAG) grounded in a company's own data; cutting the cost and latency of LLM workloads; and the production basics many AI projects skip: observability, testing, scaling and security.",
+    "Underneath is 9+ years of backend and distributed systems work across SaaS, B2B e-commerce, healthcare, logistics and fantasy sports, for clients in India, the UK, the Middle East, Africa and Indonesia."
   ],
   "stats": [
     {
-      "value": "8.5+",
+      "value": "9+",
       "label": "years building production software"
     },
     {
@@ -24,8 +24,8 @@
       "label": "concurrent users supported"
     },
     {
-      "value": "11",
-      "label": "client platforms delivered"
+      "value": "2,000+",
+      "label": "open-source tool downloads"
     }
   ],
   "contact": {
@@ -35,6 +35,19 @@
     "blog": "https://devlore.hashnode.dev/"
   },
   "skills": [
+    {
+      "area": "AI & LLM systems",
+      "items": [
+        "Agentic AI development",
+        "Tool calling & guardrails",
+        "RAG",
+        "LLM evaluation",
+        "LLM cost & latency optimisation",
+        "LLMs (Llama 3, Phi-3, Gemma-2, Mistral, OpenAI API)",
+        "Claude Code",
+        "Data pipelines"
+      ]
+    },
     {
       "area": "Languages",
       "items": [
@@ -87,18 +100,12 @@
     {
       "area": "Architecture",
       "items": [
-        "Microservices",
+        "AI solution architecture",
         "Distributed systems",
+        "Microservices",
         "System design",
-        "Event-driven architecture"
-      ]
-    },
-    {
-      "area": "AI & data",
-      "items": [
-        "LLMs (Llama 3, Phi-3, Gemma-2, Mistral, OpenAI API)",
-        "Claude Code",
-        "Data pipelines"
+        "Event-driven architecture",
+        "Multi-tenant SaaS"
       ]
     },
     {
@@ -117,8 +124,9 @@
     }
   ],
   "achievements": [
-    "Led and mentored engineering teams of up to 15 developers, setting up agile processes and CI/CD practices.",
+    "Led and mentored engineering teams of up to 15 developers, running code reviews and setting engineering standards for scalability and production stability.",
     "Key architect of Shopdotapp, which raised venture capital funding after a smooth technical launch.",
+    "Created Claude Code Router, an open-source tool with 2,000+ downloads on PyPI plus an npm package.",
     "Delivered cross-border SaaS platforms for clients in India, the UK, the Middle East, Africa and Indonesia."
   ],
   "education": [
@@ -129,11 +137,11 @@
     }
   ],
   "greeting": "Hi, I'm Satya",
-  "motto": "backend systems, distributed systems and practical AI. always shipping.",
+  "motto": "agentic AI, LLM systems and the backend that keeps them running. always shipping.",
   "bio": [
-    "I'm a software engineer and technical lead with 8.5+ years of building backend-heavy, high-scale systems. Currently I'm a Senior Software Engineer at [Spark Eighteen](experience/#spark-eighteen), where I build microservices and data pipelines for enterprise SaaS, including a [pharma compliance platform](projects/#pharma-saas) and a [VC deal-sourcing CRM](projects/#vc-crm) with an AI chatbot.",
-    "Before that I was a Technical Lead at Ziqonfox Technologies, leading a team of 15+ engineers on a [B2B e-commerce engine](projects/#shopdotapp) that went on to raise venture funding, and a [fantasy sports platform](projects/#leagueswype) that handled 10,000+ concurrent users.",
-    "On the side, I build [Claude Code Router](projects/#claude-code-router), an open-source tool that routes every Claude Code prompt to the cheapest model that can handle it. It has 1,100+ downloads on PyPI and is also on npm.",
+    "I'm a senior software engineer with 9+ years of building backend-heavy, high-scale systems, and these days I design and build AI systems that work in production, not just in demos. At [Spark Eighteen](experience/#spark-eighteen) I build agentic AI and LLM features for enterprise clients, including an AI-powered WhatsApp chatbot for a [VC deal-sourcing CRM](projects/#vc-crm) and the backend of a multi-tenant [pharma compliance platform](projects/#pharma-saas).",
+    "Before that I was a Technical Lead at Ziqonfox Technologies, leading a team of 15+ engineers on a [B2B e-commerce engine](projects/#shopdotapp) that went on to raise venture funding, and a [fantasy sports platform](projects/#leagueswype) that served 10,000+ concurrent users with zero downtime.",
+    "On the side, I build [Claude Code Router](projects/#claude-code-router), an open-source tool that sends each coding task to the cheapest Claude model that can handle it. It has 2,000+ downloads on PyPI, an npm package, and an estimated 78% cost saving in my own use.",
     "I write about system design, databases and AI engineering on [my blog](https://devlore.hashnode.dev/) and [LinkedIn](https://www.linkedin.com/in/satya-prakash-be/). My work spans e-commerce, healthcare, logistics, recruitment and workflow automation, for clients in India, the UK, the Middle East, Africa and Indonesia."
   ]
 }

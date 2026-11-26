@@ -4,7 +4,7 @@
   "featured": true,
   "order": 3,
   "org": "Spark Eighteen",
-  "summary": "Centralised compliance and drug-distribution reporting for a global pharmaceutical client.",
+  "summary": "Multi-tenant compliance and drug-distribution reporting for a global pharmaceutical client.",
   "impact": "Global reporting time cut by 50%, with better compliance accuracy.",
   "tech": [
     "NestJS",
@@ -14,7 +14,7 @@
     "REST APIs"
   ],
   "problem": "A global pharmaceutical client lacked a centralised SaaS system for compliance and accurate drug-distribution reporting.",
-  "solution": "Built an enterprise SaaS platform to aggregate and visualise large volumes of pharma data, with automated data pipelines for real-time accuracy and scale across stakeholders.",
+  "solution": "Owned backend services for a multi-tenant enterprise SaaS platform, designing APIs and data models for large-scale compliance and reporting workflows, with data ingestion and aggregation pipelines for real-time accuracy across stakeholders.",
   "result": "Reduced global reporting time by 50%, improved compliance accuracy and delivered insights faster to global pharma partners.",
   "links": []
 }

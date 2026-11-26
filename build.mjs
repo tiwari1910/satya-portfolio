@@ -220,7 +220,7 @@ pages.push({
   description: `${profile.name}'s work experience, certifications and education.`,
   body: () => `
 <h1 class="page-title">Experience</h1>
-<p class="page-lede">8.5+ years across product companies and agencies, from junior engineer to technical lead.</p>
+<p class="page-lede">9+ years across product companies and agencies, from junior engineer to technical lead, and now building AI systems for production.</p>
 
 <ol class="timeline">${experience
     .map(

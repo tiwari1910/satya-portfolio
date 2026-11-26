@@ -1,48 +1,56 @@
 [
   {
     "company": "Spark Eighteen",
-    "role": "Senior Software Engineer (Node.js)",
+    "role": "Senior Software Engineer (SDE-2)",
     "start": "Feb 2025",
     "end": "Present",
     "highlights": [
-      "Architect scalable microservices and REST APIs with NestJS and Node.js for real-time data aggregation in enterprise SaaS.",
-      "Built automated data pipelines that cut manual reporting work by 50%.",
-      "Integrate open-source AI models and custom chatbots into CRM platforms for automated deal sourcing.",
-      "Work with global stakeholders on technical roadmaps, keeping full compliance with data security standards."
+      "Build agentic AI and LLM features for enterprise clients, integrating open-source and commercial models into CRM and SaaS products.",
+      "Built an AI-powered WhatsApp chatbot and CRM automation for a venture capital firm, improving deal-sourcing efficiency by 35%.",
+      "Own backend services for a multi-tenant pharma SaaS platform, designing APIs and data models for large-scale compliance and reporting workflows.",
+      "Designed data ingestion and aggregation pipelines that cut report generation latency by ~50% while keeping data correct.",
+      "Optimise PostgreSQL schemas, indexing strategies and query plans to support high-volume datasets."
     ]
   },
   {
     "company": "Ziqonfox Technologies",
-    "role": "Technical Lead (Node.js)",
+    "role": "Technical Lead",
     "start": "Jul 2023",
     "end": "Feb 2025",
     "highlights": [
-      "Led a cross-functional team of 15+ engineers building B2B e-commerce and real-time fantasy sports platforms on an event-driven architecture.",
-      "Improved API latency by 60% and reduced data sync failures across MySQL and PostgreSQL.",
-      "Designed a backend that supported 10,000+ concurrent users with zero downtime at peak.",
-      "Built candidate-matching algorithms in Python and Node.js that raised job-matching accuracy by 45%."
+      "Led a team of 15+ engineers and owned backend architecture for a B2B e-commerce platform (Shopdotapp) and a real-time fantasy sports platform, built on an event-driven architecture.",
+      "Designed a backend serving 10,000+ concurrent users with zero downtime during peak match windows.",
+      "Built high-throughput, low-latency APIs and automated Shopify and WooCommerce sync engines, significantly reducing data inconsistencies.",
+      "Improved overall system performance by ~60% through query optimisation, batching and better data-access patterns.",
+      "Built a Python and Node.js candidate-matching engine for a recruitment platform, improving match accuracy by 45%.",
+      "Designed secure, reliable payment workflows with Stripe and Razorpay.",
+      "Mentored engineers, ran code reviews and drove engineering standards; Shopdotapp raised venture funding after launch."
     ]
   },
   {
     "company": "Think Power Solutions",
-    "role": "Senior Software Engineer (Node.js)",
+    "role": "Software Engineer",
     "start": "Jan 2022",
     "end": "Jul 2023",
     "highlights": [
-      "Built workflow automation modules and dynamic form engines with Python, Node.js and MongoDB.",
-      "Created reusable React components and Angular dashboards that sped up enterprise client onboarding.",
-      "Optimised MySQL storage and API integrations, making report generation 50% faster."
+      "Built workflow automation platforms with dynamic form engines and configurable business rules for enterprise clients, using Python, Node.js and MongoDB.",
+      "Designed and implemented role-based access control (RBAC) and multi-tenant backend services.",
+      "Optimised backend APIs and reporting workflows, reducing report generation time by ~50%.",
+      "Built React and Angular dashboards that shortened enterprise client onboarding.",
+      "Contributed to system design discussions on scalability, maintainability and failure handling."
     ]
   },
   {
     "company": "Crownstack Technologies",
-    "role": "Software Engineer (Node.js)",
+    "role": "Backend Developer",
     "start": "Feb 2019",
     "end": "Jan 2022",
     "highlights": [
-      "Built secure marketplace backends in NestJS with role-based access control and OAuth.",
-      "Designed logistics routing engines and tracking APIs that cut delivery turnaround by 30%.",
-      "Automated Spotify and Apple Music ingestion pipelines and heavy webhook traffic, cutting production bugs by 45%."
+      "Developed backend systems for logistics, service-marketplace and e-commerce platforms using NestJS, PHP and MySQL.",
+      "Built a logistics routing engine and order-tracking APIs that cut delivery turnaround by 30%.",
+      "Built a NestJS service-marketplace backend with role-based access control and OAuth.",
+      "Automated content ingestion from the Spotify and Apple Music APIs under heavy webhook traffic.",
+      "Reduced production issues by ~45% through better API design, testing and monitoring."
     ]
   },
   {
@@ -51,8 +59,8 @@
     "start": "Sep 2017",
     "end": "Feb 2019",
     "highlights": [
-      "Built a full-stack ISP management platform with PHP backends and responsive frontends.",
-      "Created billing modules and network-monitoring dashboards that reduced customer support tickets."
+      "Built a full-stack ISP management platform (PHP, JavaScript, SQL) with billing and network-monitoring dashboards, reducing support-ticket volume.",
+      "Built REST APIs, workflow automation modules and database-backed systems for real production workloads."
     ]
   }
 ]
